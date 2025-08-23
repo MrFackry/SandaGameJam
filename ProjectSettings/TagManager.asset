@@ -57,8 +57,17 @@ TagManager:
   - name: 5
     uniqueID: 1857639629
     locked: 0
+  - name: 6
+    uniqueID: 498248253
+    locked: 0
+  - name: Obstacles
+    uniqueID: 504337033
+    locked: 0
   - name: Player
     uniqueID: 3205696303
+    locked: 0
+  - name: Ground
+    uniqueID: 2715099761
     locked: 0
   m_RenderingLayers:
   - Default
