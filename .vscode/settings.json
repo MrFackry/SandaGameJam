@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "SandaGame.sln"
+    "dotnet.defaultSolution": "SandaGameJam.sln"
 }

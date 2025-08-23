@@ -28,7 +28,7 @@ public class PlayerGravityFlip : MonoBehaviour
         // Rotamos el personaje visualmente
         if (!isUpsideDown)
         {
-            transform.rotation = Quaternion.Euler(0, 0, 180); // de cabeza
+            transform.rotation = Quaternion.Euler(180, 0, 0); // de cabeza
         }
         else
         {
