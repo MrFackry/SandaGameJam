@@ -34,13 +34,13 @@ public class GameManagerMenuu : MonoBehaviour
 
     }
 
-    void Pausa()
+    public void Pausa()
     {
         MenuPausaUI.SetActive(true);
         PlayerUI.SetActive(false);
         Time.timeScale = 0f;
         JuegoPausado = true;
-        Player.SetActive(false);
+        //Player.SetActive(false);
         Cursor.visible = true;
     }
 
@@ -50,7 +50,7 @@ public class GameManagerMenuu : MonoBehaviour
         PlayerUI.SetActive(true);
         Time.timeScale = 1f;
         JuegoPausado = false;
-        Player.SetActive(true);
+        //Player.SetActive(true);
 
     }
 
