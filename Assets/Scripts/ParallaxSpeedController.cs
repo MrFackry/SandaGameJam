@@ -16,13 +16,31 @@ public class ParallaxSpeedController : MonoBehaviour
     [HideInInspector]
     public float distance;
 
-    // velocidades originales
+    // velocidades originales 1
     private ParallaxLayerMover[] parallaxLayers;
     private float[] baseSpeeds;
 
+    // velocidades originales 2
+    private ParallaxLayerMover2[] parallaxLayers2;
+    private float[] baseSpeeds2;
+
     // factor multiplicador global
     [HideInInspector]
-    public float GlobalSpeedRate = 1f;          
+    public float GlobalSpeedRate = 1f;
+
+    private void Awake()
+    {
+        // Buscar todos los ParallaxLayerMover2 en escena
+        parallaxLayers2 = FindObjectsOfType<ParallaxLayerMover2>();
+        baseSpeeds2 = new float[parallaxLayers2.Length];
+
+        // Guardar la velocidad inicial de cada capa
+        for (int i = 0; i < parallaxLayers2.Length; i++)
+        {
+            baseSpeeds2[i] = parallaxLayers2[i].moveSpeed;
+        }
+    }
+
 
     void Start()
     {
@@ -31,13 +49,13 @@ public class ParallaxSpeedController : MonoBehaviour
 
         // Buscar todos los ParallaxLayerMover en escena
         parallaxLayers = FindObjectsOfType<ParallaxLayerMover>();
-        baseSpeeds = new float[parallaxLayers.Length];
+        baseSpeeds = new float[parallaxLayers.Length];       
 
         // Guardar la velocidad inicial de cada capa
         for (int i = 0; i < parallaxLayers.Length; i++)
         {
             baseSpeeds[i] = parallaxLayers[i].moveSpeed;
-        }
+        }       
     }
 
     void Update()
@@ -60,9 +78,20 @@ public class ParallaxSpeedController : MonoBehaviour
                     parallaxLayers[i].moveSpeed = baseSpeeds[i] * GlobalSpeedRate;
                 }
             }
+
+            // Aplicar nueva velocidad proporcional a todos los fondos 2
+            for (int i = 0; i < parallaxLayers2.Length; i++)
+            {
+                if (parallaxLayers2[i] != null)
+                {
+                    parallaxLayers2[i].moveSpeed = baseSpeeds2[i] * GlobalSpeedRate;
+                }
+            }
         }
 
         // Mostrar con 2 decimales
         scoreText.text = $"Distance: {distance:F2} m";
     }
+
+
 }
