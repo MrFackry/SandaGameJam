@@ -21,8 +21,14 @@ public class Bullet : MonoBehaviour
         Debug.Log("Bala choco con " + collision.gameObject.name);
         if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Wall") || collision.gameObject.CompareTag("Bullet"))
         {
-            playerHealt.TakeDamage(damage);
             gameObject.SetActive(false);
+        }
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            if (playerHealt != null)
+            {
+                playerHealt.TakeDamage(damage);
+            }
         }
     }
 }
