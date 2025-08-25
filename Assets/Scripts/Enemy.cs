@@ -5,8 +5,6 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] public GameObject target;
     [SerializeField] public float firingSpeed;
-    [SerializeField] public float pointLife;
-    [SerializeField] public float damage;
     [SerializeField] public GameObject bullet;
     private bool isShooting = false;
 

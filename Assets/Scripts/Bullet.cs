@@ -3,6 +3,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     private PlayerHealt playerHealt;
+    [SerializeField] private float damage = 10f;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -20,7 +21,7 @@ public class Bullet : MonoBehaviour
         Debug.Log("Bala choco con " + collision.gameObject.name);
         if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Wall") || collision.gameObject.CompareTag("Bullet"))
         {
-            playerHealt.TakeDamage(10);
+            playerHealt.TakeDamage(damage);
             gameObject.SetActive(false);
         }
     }
