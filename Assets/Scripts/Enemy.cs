@@ -5,8 +5,6 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] public GameObject target;
     [SerializeField] public float firingSpeed;
-    [SerializeField] public float pointLife;
-    [SerializeField] public float damage;
     [SerializeField] public GameObject bullet;
     private bool isShooting = false;
 
@@ -24,7 +22,7 @@ public class Enemy : MonoBehaviour
             StartCoroutine(Shoot());
             isShooting = false;
         }
-        
+
     }
 
 
@@ -39,7 +37,10 @@ public class Enemy : MonoBehaviour
         //rotacion de la bala
         Quaternion rotation = Quaternion.AngleAxis(angle - 90f, Vector3.forward);
         //instanciacion de la bala
-        GameObject newBullet = Instantiate(bullet, transform.position, rotation);
+        GameObject newBullet = PoolManager.Instance.ObtenerObjeto(bullet);
+        newBullet.transform.position = transform.position;
+        newBullet.transform.rotation = rotation;
+        newBullet.SetActive(true);// se activa la bala
         //asignacion de la velocidad a la bala y el movimiento
         Rigidbody2D bulletRb = newBullet.GetComponent<Rigidbody2D>();
         bulletRb.linearVelocity = direction * firingSpeed;
