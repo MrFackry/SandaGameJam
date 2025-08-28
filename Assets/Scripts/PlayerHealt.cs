@@ -6,6 +6,7 @@ public class PlayerHealt : MonoBehaviour
     [SerializeField] public Slider healthBar;
     public bool isDead = false;
     public float maxHealth;
+    public GameObject LoseScreen;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -30,6 +31,9 @@ public class PlayerHealt : MonoBehaviour
             if (healthBar.value <= 0)
             {
                 isDead = true;
+                LoseScreen.SetActive(true);
+                Time.timeScale = 0f;
+                Cursor.visible = true;               
             }
         }
     }
